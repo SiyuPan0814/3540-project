@@ -111,6 +111,7 @@ def get_prices(biturl='https://coinmarketcap.com/currencies/bitcoin/historical-d
     bitprice, ethprice, litprice = float(bitprice), float(ethprice), float(litprice)
     return bitprice, ethprice, litprice
 
+
 def his_price(username):
     wbk = xlwt.Workbook('historic_price.xls')
     sheet = wbk.add_sheet('data')
