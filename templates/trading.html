@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block static_files %}
+<link rel="stylesheet" href="{{ url_for('static',filename='css/register_login.css') }}"/>
+{% endblock %}
+
+{% block page_name %}Trading{% endblock %}
+
+{% block body_part %}
+    <h3>Buying</h3>
+<form class="form" action="" method="POST">
+    <div class="input-group input-group-lg">
+      <span class="input-group-addon" id="sizing-addon1">BTC</span>
+      <input type="number" step="0.00000001" min="0" class="form-control" placeholder="Input a number" aria-describedby="sizing-addon1" name="btc_buy">
+    </div>
+    <div class="input-group input-group-lg">
+      <span class="input-group-addon" id="sizing-addon1">ETH</span>
+      <input type="number" step="0.00000001" min="0" class="form-control" placeholder="Input a number" aria-describedby="sizing-addon1" name="eth_buy">
+    </div>
+    <div class="input-group input-group-lg">
+      <span class="input-group-addon" id="sizing-addon1">LTC</span>
+      <input type="number" step="0.00000001" min="0" class="form-control" placeholder="Input a number" aria-describedby="sizing-addon1" name="ltc_buy">
+    </div>
+    <div class="register-button">
+        <button type="submit" name="action" value="buy" class="btn btn-primary btn-lg btn-block">Confirm and Submit</button>
+    </div>
+</form>
+
+    <h3>Selling</h3>
+<form class="form" action="" method="POST">
+    <div class="input-group input-group-lg">
+      <span class="input-group-addon" id="sizing-addon1">BTC</span>
+      <input type="number" step="0.00000001" min="0" class="form-control" placeholder="Input a number" aria-describedby="sizing-addon1" name="btc_sell">
+    </div>
+    <div class="input-group input-group-lg">
+      <span class="input-group-addon" id="sizing-addon1">ETH</span>
+      <input type="number" step="0.00000001" min="0" class="form-control" placeholder="Input a number" aria-describedby="sizing-addon1" name="eth_sell">
+    </div>
+    <div class="input-group input-group-lg">
+      <span class="input-group-addon" id="sizing-addon1">LTC</span>
+      <input type="number" step="0.00000001" min="0" class="form-control" placeholder="Input a number" aria-describedby="sizing-addon1" name="ltc_sell">
+    </div>
+    <div class="register-button">
+        <button type="submit" name="action" value="sell" class="btn btn-primary btn-lg btn-block">Confirm and Submit</button>
+    </div>
+</form>
+{% endblock %}

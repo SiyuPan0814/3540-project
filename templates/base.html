@@ -1,0 +1,112 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="https://cdn.tutsplus.com/vector/uploads/2013/11/chris-flower-600.png">
+    <!-- CSS dependencies -->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/base.css') }}"/>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
+    {% block static_files %}{% endblock %}
+    <title>{% block page_name %}{% endblock %}Home-users</title>
+</head>
+<body>
+    <nav class="navbar-expand-md navbar-dark bg-dark navbar fixed-top">
+    <!-- <nav class="navbar navbar-default"> -->
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse text-center justify-content-center" id="navbar3SupportedContent"></div>
+            <!-- <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">  -->
+              <ul class="nav navbar-nav">
+                <li class="active"><a href="{{ url_for('index') }}">Home <span class="sr-only">(current)</span></a></li>
+                  <li><a >BTC_price: {{ btc_price }}</a></li>
+                  <li><a >ETH_price: {{ eth_price }}</a></li>
+                  <li><a >LTC_price: {{ ltc_price }}</a></li>
+              </ul>
+              <ul class="nav navbar-nav navbar-right">
+                {% if login_user %}
+                    <li><a href="{{ url_for('trading') }}">User：{{ login_user }}</a></li>
+                    <li><a href="{{ url_for('deposit') }}">Credit : {{ credit }}</a></li>
+                    <li><a>BTC: {{ btc }}</a></li>
+                    <li><a>ETH: {{ eth }}</a></li>
+                    <li><a>LTC: {{ ltc }}</a></li>
+                    <li><a href="{{ url_for('buyhis') }}">Buy History</a></li>
+                    <li><a href="{{ url_for('sellhis') }}">Sell History</a></li>
+                    <li><a href="{{ url_for('deposithis') }}">Deposit History</a></li>
+                    <li><a href="{{ url_for('pl') }}">Profit and Loss</a></li>
+                    <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                {% else %}
+                    <li><a href="{{ url_for('login') }}">Login</a></li>
+                    <li><a href="{{ url_for('register') }}">Register</a></li>
+                {% endif %}
+                <li class="dropdown">
+                </li>
+              </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+    
+    <!-- 
+    <div class="body-container">
+        block body part
+        <div class="row">
+            <div class="col-lg-7 align-self-center text-lg-left text-center">
+                <h1 class="mb-0 mt-4 display-3">Cryprocurrency Trading System</h1>
+                <p class="mb-5 lead">Buying and selling cryptocurrencies</p>
+            </div>
+        </div>
+        end block
+
+    </div>    -->
+      <!-- Cover -->
+    <div class="align-items-center d-flex photo-overlay py-5 cover" style="background-image: url(&quot;https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1544170906039&di=331b20a2e4763547336bd7bcbc5c83ec&imgtype=0&src=http%3A%2F%2Fbpic.588ku.com%2Fback_pic%2F00%2F04%2F83%2F035625020097ab7.jpg&quot;);">
+        <div class="container">
+        {% block body_part %}
+            <div class="row">
+                <div class="col-lg-7 align-self-center text-center">
+                    <h1 class="mb-0 mt-4 display-3">Cryptocurrency Trading System</h1>
+                    <p class="mb-5 lead">This a cryptocurrency trading system. The users are allowed to buy or sell cryptocyrrencires and track trading profitability and loss. There are three cryptocurrencies in the system: Bitcoin, Ethereum and Litecoin. </p>
+                    <p> </p>
+                </div>
+                
+                <div class="col-lg-5 p-3">
+                    <form class="p-4 bg-dark-opaque" method="post" action="https://formspree.io/">
+                    </form>
+                </div> 
+            </div>
+        {% endblock %}
+        </div>
+    </div>
+
+    <div class="flash-message">
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul>
+            {% for message in messages %}
+                {% if status == 'YES' %}
+                    <li><div class="alert alert-info" role="alert">{{ message }}</div></li>
+                {% else %}
+                    <li><div class="alert alert-danger" role="alert">{{ message }}</div></li>
+                {% endif %}
+            {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block static_files %}
+<link rel="stylesheet" href="{{ url_for('static',filename='css/register_login.css') }}"/>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/table.css')}}"/>
+{% endblock %}
+
+{% block page_name %}Sellhistory{% endblock %}
+
+{% block body_part %}
+    <h3>Sell History</h3>
+    <table id="customers">
+    <tr>
+        <th>Time</th><th>Detail</th>
+    </tr>
+    {% for k, v in his_dict.items() %}
+        <tr>
+        <td>{{ k }}</td> <td>{{ v }}</td>
+        </tr>
+    {% endfor %}
+
+    </table>
+{% endblock %}

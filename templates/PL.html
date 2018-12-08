@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block static_files %}
+<link rel="stylesheet" href="{{ url_for('static',filename='css/register_login.css') }}"/>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/table.css')}}"/>
+{% endblock %}
+
+{% block page_name %}P&L{% endblock %}
+
+{% block body_part %}
+    <h3>Profit and Loss(USD dollars)</h3>
+    <table id="customers">
+    <tr>
+        <th></th><th>Realized Profit and Loss</th><th>Unrealized Profit and Loss</th>
+    </tr>
+    <tr>
+        <td><b>Bitcoin</b></td><td>{{ btc_rpl }}</td> <td>{{ btc_upl }}</td>
+    </tr>
+    <tr>
+        <td><b>Ethereum</b></td><td>{{ eth_rpl }}</td> <td>{{ eth_upl }}</td>
+    </tr>
+    <tr>
+        <td><b>Litecoin</b></td><td>{{ ltc_rpl }}</td> <td>{{ ltc_upl }}</td>
+    </tr>
+    <tr>
+        <td><b>Total</b></td><td>{{ total_rpl }}</td> <td>{{ total_upl }}</td>
+    </tr>
+
+{% endblock %}
